@@ -1,0 +1,2005 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Feliz cumpleaños, Sra. Carmencita</title>
+
+<style>
+
+/* =====================================================
+   CONFIGURACIÓN GENERAL
+===================================================== */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    width:100%;
+    min-height:100vh;
+    background:#07121f;
+    color:#fff;
+    font-family:Arial,sans-serif;
+    overflow-x:hidden;
+}
+
+
+/* =====================================================
+   FONDO
+===================================================== */
+
+.fondo{
+    position:fixed;
+    inset:0;
+    z-index:-5;
+
+    background:
+        radial-gradient(
+            circle at 15% 20%,
+            rgba(212,171,91,.13),
+            transparent 30%
+        ),
+
+        radial-gradient(
+            circle at 85% 75%,
+            rgba(71,111,160,.20),
+            transparent 35%
+        ),
+
+        linear-gradient(
+            135deg,
+            #050c16,
+            #0a1a2b,
+            #07111d
+        );
+}
+
+.estrellas{
+    position:fixed;
+    inset:0;
+    z-index:-4;
+    pointer-events:none;
+
+    background-image:
+        radial-gradient(
+            circle,
+            rgba(255,255,255,.8) 1px,
+            transparent 1px
+        );
+
+    background-size:120px 120px;
+    opacity:.17;
+}
+
+.brillos{
+    position:fixed;
+    inset:0;
+    z-index:-3;
+    pointer-events:none;
+
+    background:
+        radial-gradient(
+            circle at 50% 10%,
+            rgba(244,210,135,.08),
+            transparent 25%
+        );
+}
+
+
+/* =====================================================
+   PANTALLAS
+===================================================== */
+
+.pantalla{
+    width:100%;
+    min-height:100vh;
+
+    display:none;
+
+    justify-content:center;
+    align-items:center;
+
+    padding:80px 20px 60px;
+
+    text-align:center;
+}
+
+.pantalla.activa{
+    display:flex;
+    animation:aparecer .8s ease;
+}
+
+@keyframes aparecer{
+
+    from{
+        opacity:0;
+        transform:translateY(30px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+.contenido{
+    width:100%;
+    max-width:1000px;
+}
+
+
+/* =====================================================
+   TEXTOS
+===================================================== */
+
+.pequeno{
+    color:#d8b875;
+    font-size:12px;
+    letter-spacing:4px;
+    text-transform:uppercase;
+    margin-bottom:20px;
+}
+
+.estrellita{
+    color:#e5c47b;
+    font-size:48px;
+    margin-bottom:15px;
+
+    animation:brillo 2.5s infinite;
+}
+
+@keyframes brillo{
+
+    0%,100%{
+        opacity:.65;
+        transform:scale(1);
+    }
+
+    50%{
+        opacity:1;
+        transform:scale(1.15);
+    }
+}
+
+h1{
+    font-family:Georgia,serif;
+
+    font-size:
+        clamp(
+            55px,
+            9vw,
+            100px
+        );
+
+    line-height:.9;
+    font-weight:normal;
+    margin-bottom:25px;
+}
+
+h1 span{
+    color:#e1bd73;
+    font-style:italic;
+}
+
+h2{
+    font-family:Georgia,serif;
+
+    font-size:
+        clamp(
+            42px,
+            7vw,
+            72px
+        );
+
+    font-weight:normal;
+    line-height:1;
+
+    margin:20px 0 30px;
+}
+
+h2 span{
+    color:#e1bd73;
+    font-style:italic;
+}
+
+.descripcion{
+    color:#c6d0d9;
+    font-size:16px;
+    line-height:1.8;
+    margin-bottom:30px;
+}
+
+.numero{
+    color:#d8b875;
+    letter-spacing:5px;
+    font-size:13px;
+}
+
+.linea{
+    width:65px;
+    height:1px;
+    background:#d8b875;
+    margin:25px auto;
+}
+
+.texto{
+    max-width:700px;
+    margin:20px auto;
+
+    color:#c8d0d7;
+
+    font-size:16px;
+    line-height:1.9;
+}
+
+
+/* =====================================================
+   BOTÓN PRINCIPAL
+===================================================== */
+
+.boton-principal{
+
+    border:
+        1px solid
+        rgba(231,196,124,.6);
+
+    padding:
+        17px 34px;
+
+    border-radius:50px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #d7b66e,
+            #edd394
+        );
+
+    color:#17202a;
+
+    font-size:14px;
+
+    font-weight:bold;
+
+    letter-spacing:1px;
+
+    cursor:pointer;
+
+    box-shadow:
+        0 10px 35px
+        rgba(220,182,104,.22);
+
+    transition:.3s;
+}
+
+.boton-principal:hover{
+
+    transform:translateY(-4px);
+
+    box-shadow:
+        0 15px 45px
+        rgba(220,182,104,.38);
+}
+
+
+/* =====================================================
+   BOTONES SECUNDARIOS
+===================================================== */
+
+.boton{
+
+    margin-top:30px;
+
+    padding:
+        13px 27px;
+
+    border-radius:40px;
+
+    border:
+        1px solid
+        rgba(216,184,117,.35);
+
+    background:
+        rgba(255,255,255,.055);
+
+    color:#f1e7d0;
+
+    cursor:pointer;
+
+    font-size:14px;
+
+    transition:.3s;
+}
+
+.boton:hover{
+
+    background:
+        rgba(216,184,117,.12);
+
+    transform:translateY(-3px);
+}
+
+
+/* =====================================================
+   MÚSICA
+===================================================== */
+
+#btnMusica{
+
+    position:fixed;
+
+    top:18px;
+    right:18px;
+
+    z-index:9999;
+
+    border:
+        1px solid
+        rgba(216,184,117,.35);
+
+    background:
+        rgba(7,18,31,.86);
+
+    color:#e6ca8a;
+
+    padding:
+        10px 16px;
+
+    border-radius:30px;
+
+    font-size:13px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+
+    backdrop-filter:blur(6px);
+
+    box-shadow:
+        0 8px 25px
+        rgba(0,0,0,.35);
+}
+
+
+/* =====================================================
+   FOTO PORTADA
+===================================================== */
+
+.foto-portada{
+
+    width:
+        min(
+            390px,
+            88vw
+        );
+
+    margin:
+        40px auto 30px;
+
+    padding:
+        12px 12px 25px;
+
+    background:#fffdf7;
+
+    box-shadow:
+        0 25px 70px
+        rgba(0,0,0,.55);
+
+    transform:rotate(-2deg);
+
+    animation:
+        entradaFoto 1.2s ease;
+}
+
+.foto-portada img{
+
+    width:100%;
+
+    display:block;
+}
+
+.foto-portada p{
+
+    color:#62574a;
+
+    font-family:Georgia,serif;
+
+    font-size:16px;
+
+    margin-top:13px;
+}
+
+@keyframes entradaFoto{
+
+    from{
+
+        opacity:0;
+
+        transform:
+            translateY(50px)
+            rotate(-7deg)
+            scale(.92);
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:
+            translateY(0)
+            rotate(-2deg)
+            scale(1);
+    }
+}
+
+
+/* =====================================================
+   TARJETAS
+===================================================== */
+
+.tarjetas{
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    gap:18px;
+
+    margin-top:40px;
+}
+
+.tarjeta{
+
+    padding:
+        28px 20px;
+
+    border-radius:20px;
+
+    background:
+        rgba(255,255,255,.045);
+
+    border:
+        1px solid
+        rgba(216,184,117,.14);
+
+    transition:.3s;
+}
+
+.tarjeta:hover{
+
+    transform:translateY(-7px);
+
+    background:
+        rgba(255,255,255,.07);
+}
+
+.icono{
+
+    font-size:34px;
+
+    color:#e1bd73;
+
+    margin-bottom:15px;
+}
+
+.tarjeta h3{
+
+    font-family:Georgia,serif;
+
+    font-size:25px;
+
+    font-weight:normal;
+
+    margin-bottom:10px;
+
+    color:#eee5d4;
+}
+
+.tarjeta p{
+
+    color:#bfc9d1;
+
+    font-size:14px;
+
+    line-height:1.7;
+}
+
+
+/* =====================================================
+   GALERÍA
+===================================================== */
+
+.galeria{
+
+    margin:
+        45px auto 0;
+
+    display:grid;
+
+    grid-template-columns:
+        1fr 1fr 1fr;
+
+    gap:20px;
+
+    max-width:1000px;
+
+    align-items:center;
+}
+
+
+.foto{
+
+    background:#fffdf7;
+
+    padding:
+        10px
+        10px
+        30px;
+
+    box-shadow:
+        0 20px 60px
+        rgba(0,0,0,.5);
+
+    transition:.5s;
+
+    position:relative;
+}
+
+
+.foto:nth-child(1){
+
+    transform:rotate(-2deg);
+}
+
+
+.foto:nth-child(2){
+
+    transform:
+        translateY(18px)
+        rotate(1deg);
+}
+
+
+.foto:nth-child(3){
+
+    transform:rotate(2deg);
+}
+
+
+.foto:hover{
+
+    transform:
+        translateY(-10px)
+        rotate(0)
+        scale(1.02);
+
+    z-index:5;
+}
+
+
+.foto img{
+
+    width:100%;
+
+    height:300px;
+
+    object-fit:cover;
+
+    display:block;
+}
+
+
+.foto p{
+
+    color:#62574a;
+
+    font-family:Georgia,serif;
+
+    font-size:15px;
+
+    margin-top:12px;
+}
+
+
+/* =====================================================
+   GIF CENTRADO
+===================================================== */
+
+.foto-gif{
+
+    transform:
+        translateY(18px)
+        rotate(1deg);
+}
+
+
+.foto-gif img{
+
+    width:100%;
+
+    height:300px;
+
+    object-fit:contain;
+
+    background:#07121f;
+
+    display:block;
+}
+
+
+.foto-gif:hover{
+
+    transform:
+        translateY(8px)
+        scale(1.02);
+}
+
+
+/* =====================================================
+   CARTA
+===================================================== */
+
+.carta{
+
+    max-width:650px;
+
+    margin:
+        45px auto;
+
+    padding:
+        45px 40px;
+
+    background:#fffdf7;
+
+    color:#39434a;
+
+    border-radius:10px;
+
+    box-shadow:
+        0 30px 100px
+        rgba(0,0,0,.55);
+
+    text-align:left;
+
+    position:relative;
+}
+
+
+.carta:before{
+
+    content:"";
+
+    position:absolute;
+
+    inset:12px;
+
+    border:
+        1px solid
+        rgba(177,139,70,.25);
+
+    pointer-events:none;
+}
+
+
+.carta h3{
+
+    text-align:center;
+
+    font-family:Georgia,serif;
+
+    font-size:43px;
+
+    font-weight:normal;
+
+    color:#9b7939;
+
+    margin-bottom:30px;
+}
+
+
+.carta p{
+
+    font-family:Georgia,serif;
+
+    font-size:19px;
+
+    line-height:1.8;
+
+    margin-bottom:20px;
+}
+
+
+/* =====================================================
+   FOTO FINAL
+===================================================== */
+
+.foto-final{
+
+    width:
+        min(
+            650px,
+            92vw
+        );
+
+    margin:
+        45px auto;
+
+    background:#fffdf7;
+
+    padding:
+        12px
+        12px
+        18px;
+
+    box-shadow:
+        0 30px 80px
+        rgba(0,0,0,.55);
+
+    transform:rotate(-1deg);
+
+    animation:
+        fotoFinal 1.2s ease;
+}
+
+
+.foto-final img{
+
+    width:100%;
+
+    display:block;
+}
+
+
+@keyframes fotoFinal{
+
+    from{
+
+        opacity:0;
+
+        transform:
+            translateY(50px)
+            rotate(-5deg)
+            scale(.94);
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:
+            translateY(0)
+            rotate(-1deg)
+            scale(1);
+    }
+}
+
+
+/* =====================================================
+   MENSAJE FINAL
+===================================================== */
+
+.mensaje-final{
+
+    margin-top:35px;
+
+    padding:35px;
+
+    border-top:
+        1px solid
+        rgba(216,184,117,.4);
+
+    border-bottom:
+        1px solid
+        rgba(216,184,117,.4);
+}
+
+
+.mensaje-final .grande{
+
+    font-family:Georgia,serif;
+
+    color:#e3c27b;
+
+    font-size:32px;
+
+    font-style:italic;
+
+    line-height:1.5;
+
+    margin-bottom:20px;
+}
+
+
+.mensaje-final p{
+
+    color:#c9d1d7;
+
+    font-size:17px;
+
+    line-height:1.9;
+}
+
+
+.firma{
+
+    margin-top:35px;
+
+    font-family:Georgia,serif;
+
+    color:#e2c27c;
+
+    font-size:25px;
+
+    font-style:italic;
+
+    line-height:1.5;
+}
+
+
+/* =====================================================
+   CONFETI
+===================================================== */
+
+.confeti{
+
+    position:fixed;
+
+    width:8px;
+
+    height:14px;
+
+    top:-20px;
+
+    z-index:100;
+
+    pointer-events:none;
+
+    animation:
+        caer 5s linear forwards;
+}
+
+
+@keyframes caer{
+
+    to{
+
+        transform:
+            translateY(110vh)
+            rotate(720deg);
+
+        opacity:0;
+    }
+}
+
+
+/* =====================================================
+   BOTÓN VOLVER
+===================================================== */
+
+.volver{
+
+    position:fixed;
+
+    bottom:20px;
+    left:20px;
+
+    width:45px;
+    height:45px;
+
+    border-radius:50%;
+
+    border:
+        1px solid
+        rgba(216,184,117,.35);
+
+    background:
+        rgba(255,255,255,.06);
+
+    color:#e3c27c;
+
+    cursor:pointer;
+
+    display:none;
+
+    z-index:100;
+}
+
+
+.volver.visible{
+
+    display:block;
+}
+
+
+/* =====================================================
+   CELULAR
+===================================================== */
+
+@media(max-width:700px){
+
+    .pantalla{
+
+        padding:
+            75px
+            18px
+            50px;
+    }
+
+
+    .tarjetas{
+
+        grid-template-columns:1fr;
+    }
+
+
+    .galeria{
+
+        grid-template-columns:1fr;
+
+        gap:25px;
+    }
+
+
+    .foto{
+
+        width:100%;
+    }
+
+
+    .foto:nth-child(1),
+    .foto:nth-child(2),
+    .foto:nth-child(3){
+
+        transform:none;
+    }
+
+
+    .foto img{
+
+        height:auto;
+
+        max-height:520px;
+    }
+
+
+    .foto-gif{
+
+        transform:
+            translateY(0);
+    }
+
+
+    .foto-gif:hover{
+
+        transform:
+            translateY(-5px)
+            scale(1.02);
+    }
+
+
+    .carta{
+
+        padding:
+            35px
+            25px;
+    }
+
+
+    .carta p{
+
+        font-size:18px;
+    }
+
+
+    .mensaje-final{
+
+        padding:
+            25px
+            10px;
+    }
+
+
+    .mensaje-final .grande{
+
+        font-size:27px;
+    }
+
+
+    #btnMusica{
+
+        top:10px;
+
+        right:10px;
+
+        padding:
+            8px
+            13px;
+
+        font-size:12px;
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- =====================================================
+     FONDOS
+===================================================== -->
+
+<div class="fondo"></div>
+
+<div class="estrellas"></div>
+
+<div class="brillos"></div>
+
+
+<!-- =====================================================
+     MÚSICA
+===================================================== -->
+
+<audio
+    id="musica"
+    src="musica.mp3"
+    preload="auto">
+</audio>
+
+
+<button
+    id="btnMusica"
+    onclick="alternarMusica()">
+
+    ▶️ Escuchar
+
+</button>
+
+
+
+<!-- =====================================================
+     PANTALLA 1 - PORTADA
+===================================================== -->
+
+<section
+    class="pantalla activa"
+    id="pantalla1">
+
+    <div class="contenido">
+
+
+        <div class="estrellita">
+            ✦
+        </div>
+
+
+        <p class="pequeno">
+
+            HOY ES UN DÍA MUY ESPECIAL
+
+        </p>
+
+
+        <h1>
+
+            Feliz cumpleaños,
+
+            <br>
+
+            <span>
+                Sra. Carmencita
+            </span>
+
+        </h1>
+
+
+        <p class="descripcion">
+
+            Hoy queremos celebrar la vida
+            de una persona muy especial
+            para nosotros.
+
+            <br><br>
+
+            Y quisimos preparar este pequeño
+            detalle con mucho cariño.
+
+        </p>
+
+
+        <div class="foto-portada">
+
+            <img
+                src="foto1.jpg"
+                alt="Primer recuerdo de la Sra. Carmencita">
+
+            <p>
+
+                Un recuerdo bonito para
+                comenzar este día especial. 🌻
+
+            </p>
+
+        </div>
+
+
+        <button
+            class="boton-principal"
+            onclick="comenzarSorpresa()">
+
+            🎁 ABRIR MI SORPRESA
+
+        </button>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     PANTALLA 2 - MENSAJE
+===================================================== -->
+
+<section
+    class="pantalla"
+    id="pantalla2">
+
+    <div class="contenido">
+
+
+        <span class="numero">
+
+            01
+
+        </span>
+
+
+        <h2>
+
+            Querida
+
+            <span>
+                Sra. Carmencita
+            </span>
+
+        </h2>
+
+
+        <div class="linea"></div>
+
+
+        <p class="texto">
+
+            Hoy es una fecha especial,
+            y no queríamos dejar pasar
+            la oportunidad de dedicarle
+            unas palabras.
+
+        </p>
+
+
+        <p class="texto">
+
+            Esperamos que este nuevo año
+            de vida llegue acompañado
+            de muchas alegrías, tranquilidad,
+            salud y momentos bonitos.
+
+        </p>
+
+
+        <p class="texto">
+
+            Porque hay personas que,
+            con su forma de ser,
+            dejan recuerdos especiales
+            en quienes tienen la suerte
+            de conocerlas.
+
+        </p>
+
+
+        <button
+            class="boton"
+            onclick="irA(3)">
+
+            Continuar →
+
+        </button>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     PANTALLA 3 - GALERÍA
+===================================================== -->
+
+<section
+    class="pantalla"
+    id="pantalla3">
+
+    <div class="contenido">
+
+
+        <span class="numero">
+
+            02
+
+        </span>
+
+
+        <h2>
+
+            Algunos de nuestros
+
+            <span>
+                recuerdos
+            </span>
+
+        </h2>
+
+
+        <div class="linea"></div>
+
+
+        <p class="texto">
+
+            Hay momentos que quizás
+            parecen pequeños en su momento,
+            pero con el tiempo terminan
+            convirtiéndose en recuerdos
+            que guardamos con mucho cariño.
+
+        </p>
+
+
+        <div class="galeria">
+
+
+            <!-- FOTO 2 -->
+
+            <div class="foto">
+
+                <img
+                    src="foto2.jpg"
+                    alt="Segundo recuerdo">
+
+                <p>
+
+                    Momentos que siempre
+                    nos hacen sonreír. 🎄
+
+                </p>
+
+            </div>
+
+
+            <!-- GIF -->
+
+            <div class="foto foto-gif">
+
+                <img
+                    src="gifcumple.gif"
+                    alt="Detalle especial de cumpleaños">
+
+                <p>
+
+                    Un pequeño detalle
+                    para celebrar este día. ✨
+
+                </p>
+
+            </div>
+
+
+            <!-- FOTO 3 -->
+
+            <div class="foto">
+
+                <img
+                    src="foto3.jpg"
+                    alt="Tercer recuerdo">
+
+                <p>
+
+                    Un momento especial
+                    que guardamos con cariño. 🎂
+
+                </p>
+
+            </div>
+
+
+        </div>
+
+
+        <button
+            class="boton"
+            onclick="irA(4)">
+
+            Hay algo más... →
+
+        </button>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     PANTALLA 4 - DESEOS
+===================================================== -->
+
+<section
+    class="pantalla"
+    id="pantalla4">
+
+    <div class="contenido">
+
+
+        <span class="numero">
+
+            03
+
+        </span>
+
+
+        <h2>
+
+            Nuestros deseos
+
+            <span>
+                para usted
+            </span>
+
+        </h2>
+
+
+        <div class="linea"></div>
+
+
+        <div class="tarjetas">
+
+
+            <div class="tarjeta">
+
+                <div class="icono">
+                    ✦
+                </div>
+
+                <h3>
+                    Salud
+                </h3>
+
+                <p>
+
+                    Que nunca falten salud,
+                    tranquilidad y bienestar
+                    para disfrutar cada día.
+
+                </p>
+
+            </div>
+
+
+            <div class="tarjeta">
+
+                <div class="icono">
+                    ♡
+                </div>
+
+                <h3>
+                    Felicidad
+                </h3>
+
+                <p>
+
+                    Que siempre encuentre
+                    motivos para sonreír
+                    y disfrutar los buenos momentos.
+
+                </p>
+
+            </div>
+
+
+            <div class="tarjeta">
+
+                <div class="icono">
+                    ✧
+                </div>
+
+                <h3>
+                    Sueños
+                </h3>
+
+                <p>
+
+                    Que todos sus proyectos
+                    y sueños puedan convertirse
+                    poco a poco en realidad.
+
+                </p>
+
+            </div>
+
+
+        </div>
+
+
+        <button
+            class="boton"
+            onclick="irA(5)">
+
+            Leer nuestro mensaje →
+
+        </button>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     PANTALLA 5 - CARTA
+===================================================== -->
+
+<section
+    class="pantalla"
+    id="pantalla5">
+
+    <div class="contenido">
+
+
+        <span class="numero">
+
+            04
+
+        </span>
+
+
+        <h2>
+
+            Un mensaje
+
+            <span>
+                de corazón
+            </span>
+
+        </h2>
+
+
+        <div class="carta">
+
+
+            <h3>
+
+                Feliz cumpleaños
+
+            </h3>
+
+
+            <p>
+
+                Querida Sra. Carmencita:
+
+            </p>
+
+
+            <p>
+
+                Hoy queremos desearle
+                un cumpleaños lleno de
+                alegría, cariño y momentos
+                que pueda guardar siempre
+                en su corazón.
+
+            </p>
+
+
+            <p>
+
+                Que este nuevo año de vida
+                venga acompañado de salud,
+                tranquilidad, nuevas alegrías
+                y muchas oportunidades
+                para cumplir sus sueños.
+
+            </p>
+
+
+            <p>
+
+                Esperamos que pueda disfrutar
+                cada momento junto a las
+                personas que la quieren
+                y que nunca le falten
+                motivos para sonreír.
+
+            </p>
+
+
+            <p>
+
+                Gracias por todos los
+                momentos compartidos,
+                por las sonrisas y por
+                formar parte de tantos
+                recuerdos bonitos.
+
+            </p>
+
+
+            <p
+                style="
+                    text-align:center;
+                    color:#9b7939;
+                    font-size:23px;
+                "
+            >
+
+                ♡ Con mucho cariño ♡
+
+            </p>
+
+
+        </div>
+
+
+        <button
+            class="boton"
+            onclick="irA(6)">
+
+            Ver nuestro último mensaje →
+
+        </button>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     PANTALLA 6 - FINAL
+===================================================== -->
+
+<section
+    class="pantalla"
+    id="pantalla6">
+
+    <div class="contenido">
+
+
+        <div class="estrellita">
+            ✦
+        </div>
+
+
+        <p class="pequeno">
+
+            PARA TERMINAR ESTE PEQUEÑO DETALLE
+
+        </p>
+
+
+        <h2>
+
+            ¡Feliz cumpleaños,
+
+            <span>
+                Sra. Carmencita!
+            </span>
+
+        </h2>
+
+
+        <!-- FOTO 5 - SOLO AQUÍ -->
+
+        <div class="foto-final">
+
+            <img
+                src="foto5.jpg"
+                alt="Foto final">
+
+        </div>
+
+
+        <div class="mensaje-final">
+
+
+            <div class="grande">
+
+                Le deseamos lo mejor
+                hoy y siempre. ♡
+
+            </div>
+
+
+            <p>
+
+                Que este nuevo año de vida
+                esté lleno de salud,
+                felicidad, tranquilidad,
+                éxitos y muchos momentos
+                inolvidables.
+
+            </p>
+
+
+            <br>
+
+
+            <p>
+
+                Que cada nuevo día le traiga
+                nuevas razones para sonreír,
+                nuevos sueños por cumplir
+                y muchas experiencias bonitas
+                junto a las personas que quiere.
+
+            </p>
+
+
+            <br>
+
+
+            <p>
+
+                Gracias por tantos momentos,
+                por las risas, por los recuerdos
+                y por permitirnos compartir
+                parte de su camino.
+
+            </p>
+
+
+            <br>
+
+
+            <p>
+
+                Esperamos de todo corazón
+                que este cumpleaños sea
+                el comienzo de un año
+                maravilloso para usted.
+
+            </p>
+
+
+            <div class="firma">
+
+                Con mucho cariño,
+
+                <br><br>
+
+                <strong>
+                    Jorge y Jenifer
+                </strong>
+
+                <br>
+
+                De parte de las personas
+                que la queremos mucho. ♡
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     BOTÓN VOLVER
+===================================================== -->
+
+<button
+    class="volver"
+    id="volver"
+    onclick="volver()">
+
+    ←
+
+</button>
+
+
+
+<script>
+
+/* =====================================================
+   NAVEGACIÓN
+===================================================== */
+
+let actual = 1;
+
+
+function irA(numero){
+
+    const actualEl =
+        document.getElementById(
+            "pantalla" + actual
+        );
+
+    const nueva =
+        document.getElementById(
+            "pantalla" + numero
+        );
+
+    if(!nueva){
+        return;
+    }
+
+    actualEl.classList.remove(
+        "activa"
+    );
+
+    nueva.classList.add(
+        "activa"
+    );
+
+    actual = numero;
+
+    document
+        .getElementById("volver")
+        .classList.toggle(
+            "visible",
+            actual > 1
+        );
+
+    window.scrollTo({
+
+        top:0,
+
+        behavior:"smooth"
+
+    });
+
+    if(actual === 6){
+
+        lanzarConfeti();
+
+    }
+
+}
+
+
+/* =====================================================
+   VOLVER
+===================================================== */
+
+function volver(){
+
+    if(actual > 1){
+
+        irA(
+            actual - 1
+        );
+
+    }
+
+}
+
+
+/* =====================================================
+   MÚSICA
+===================================================== */
+
+const musica =
+    document.getElementById(
+        "musica"
+    );
+
+const btnMusica =
+    document.getElementById(
+        "btnMusica"
+    );
+
+musica.volume = 0.7;
+
+
+function actualizarBotonMusica(){
+
+    if(musica.paused){
+
+        btnMusica.textContent =
+            "▶️ Escuchar";
+
+    }else{
+
+        btnMusica.textContent =
+            "⏸️ Pausar";
+
+    }
+
+}
+
+
+/* =====================================================
+   ABRIR SORPRESA
+===================================================== */
+
+async function comenzarSorpresa(){
+
+    try{
+
+        await musica.play();
+
+    }
+
+    catch(error){
+
+        console.log(
+            "El navegador bloqueó el audio."
+        );
+
+    }
+
+    actualizarBotonMusica();
+
+    irA(2);
+
+}
+
+
+/* =====================================================
+   PAUSAR / REANUDAR
+===================================================== */
+
+async function alternarMusica(){
+
+    if(musica.paused){
+
+        try{
+
+            await musica.play();
+
+        }
+
+        catch(error){
+
+            console.log(
+                "No se pudo reproducir la música."
+            );
+
+        }
+
+    }else{
+
+        musica.pause();
+
+    }
+
+    actualizarBotonMusica();
+
+}
+
+
+/* =====================================================
+   REPETIR MÚSICA
+===================================================== */
+
+musica.addEventListener(
+    "ended",
+    function(){
+
+        musica.currentTime = 0;
+
+        musica.play().catch(
+            function(){}
+        );
+
+        actualizarBotonMusica();
+
+    }
+);
+
+
+/* =====================================================
+   CONFETI
+===================================================== */
+
+function lanzarConfeti(){
+
+    for(
+        let i = 0;
+        i < 70;
+        i++
+    ){
+
+        const pieza =
+            document.createElement(
+                "div"
+            );
+
+        pieza.className =
+            "confeti";
+
+        pieza.style.left =
+            Math.random() *
+            100 +
+            "vw";
+
+        pieza.style.animationDelay =
+            Math.random() *
+            2 +
+            "s";
+
+        pieza.style.background =
+            colorConfeti();
+
+        document.body.appendChild(
+            pieza
+        );
+
+        setTimeout(
+            function(){
+
+                pieza.remove();
+
+            },
+            7000
+        );
+
+    }
+
+}
+
+
+function colorConfeti(){
+
+    const colores = [
+
+        "#d8b875",
+        "#f0dca4",
+        "#ffffff",
+        "#8da9c4",
+        "#e3c27b"
+
+    ];
+
+    return colores[
+        Math.floor(
+            Math.random() *
+            colores.length
+        )
+    ];
+
+}
+
+
+/* =====================================================
+   INICIO
+===================================================== */
+
+actualizarBotonMusica();
+
+</script>
+
+</body>
+
+</html>
